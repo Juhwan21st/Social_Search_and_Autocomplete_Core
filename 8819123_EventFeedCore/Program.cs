@@ -1,7 +1,12 @@
-﻿internal static class Program
+﻿using EventFeedCore.Domain;
+using EventFeedCore.UI;
+
+internal static class Program
 {
     private static void Main()
     {
+        var feed = new EventFeed();
+        feed.LoadSampleData();
         bool isRunning = true;
 
         while (isRunning)
@@ -32,7 +37,7 @@
                     Console.WriteLine("TODO: Process event");
                     break;
                 case "4":
-                    Console.WriteLine("TODO: Display feed");
+                    FeedDisplay.ShowFeed(feed);
                     break;
                 case "5":
                     Console.WriteLine("TODO: Pin post");
