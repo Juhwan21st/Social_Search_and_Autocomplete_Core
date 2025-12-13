@@ -18,7 +18,11 @@ public static class FeedDisplay
         }
 
         Console.WriteLine("\n=== Event Feed ===");
-        foreach (var post in posts)
+        
+        // Show pinned posts first
+        var sortedPosts = posts.OrderByDescending(p => p.IsPinned).ThenBy(p => p.Id);
+        
+        foreach (var post in sortedPosts)
         {
             string pinned = post.IsPinned ? "[PINNED] " : "";
             Console.WriteLine($"{pinned}[{post.Id}] {post.Author}: {post.Content} (Likes: {post.Likes})");

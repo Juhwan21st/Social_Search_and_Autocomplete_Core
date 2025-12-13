@@ -12,6 +12,20 @@ public class EventFeed
 
     public IReadOnlyList<Post> GetAllPosts() => _posts.AsReadOnly();
 
+    public Post? FindPostById(int id)
+    {
+        return _posts.Find(p => p.Id == id);
+    }
+
+    public bool PinPost(int id)
+    {
+        var post = FindPostById(id);
+        if (post is null) return false;
+        
+        post.IsPinned = true;
+        return true;
+    }
+
     public void LoadSampleData()
     {
         AddPost(new Post(1, "alice", "Hello world! #greeting"));

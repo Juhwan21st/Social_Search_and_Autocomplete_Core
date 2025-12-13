@@ -40,7 +40,22 @@ internal static class Program
                     FeedDisplay.ShowFeed(feed);
                     break;
                 case "5":
-                    Console.WriteLine("TODO: Pin post");
+                    Console.Write("Enter post ID to pin: ");
+                    if (int.TryParse(Console.ReadLine(), out int pinId))
+                    {
+                        if (feed.PinPost(pinId))
+                        {
+                            Console.WriteLine($"Pinned post {pinId}.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Post {pinId} not found.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid post ID.");
+                    }
                     break;
                 case "6":
                     Console.WriteLine("TODO: Delete post");
