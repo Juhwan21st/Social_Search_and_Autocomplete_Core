@@ -1,4 +1,10 @@
-﻿using EventFeedCore.Domain;
+﻿/*
+* Course: PROG3330 - Fall 2025 - Section 2
+* Programmed by : Juhwan Seo [8819123]
+* Project: Event Feed & Moderation Core Assignment
+*/
+
+using EventFeedCore.Domain;
 using EventFeedCore.UI;
 
 internal static class Program
@@ -58,7 +64,22 @@ internal static class Program
                     }
                     break;
                 case "6":
-                    Console.WriteLine("TODO: Delete post");
+                    Console.Write("Enter post ID to delete: ");
+                    if (int.TryParse(Console.ReadLine(), out int deleteId))
+                    {
+                        if (feed.DeletePost(deleteId))
+                        {
+                            Console.WriteLine($"Deleted post {deleteId}.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Post {deleteId} not found.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid post ID.");
+                    }
                     break;
                 case "7":
                     Console.WriteLine("TODO: Undo");

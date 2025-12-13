@@ -26,6 +26,15 @@ public class EventFeed
         return true;
     }
 
+    public bool DeletePost(int id)
+    {
+        var post = FindPostById(id);
+        if (post is null) return false;
+        
+        _posts.Remove(post);
+        return true;
+    }
+
     public void LoadSampleData()
     {
         AddPost(new Post(1, "alice", "Hello world! #greeting"));
